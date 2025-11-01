@@ -78,7 +78,7 @@ def verify_view(request, uuid):
         if user.wrong_code_actions >= 3:
             context = {'error': 'Превышено кол-во попыток!'}
         else:
-            context = {'error': 'Неверный код!'}
+            context = {'error': f'Неверный код! Осталось попыток {3 - user.wrong_code_actions}'}
         user.save()
         return render(request, f'{mobile}verification-page.html', context)
     if (request.method == 'GET' and request.user.is_authenticated
