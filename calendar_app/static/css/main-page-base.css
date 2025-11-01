@@ -60,7 +60,6 @@ body {
 .fc .fc-daygrid-day-frame {
     min-weight: 8vw;
     min-height: 10vh;
-    overflow: hidden !important;
 }
 
 .fc-daygrid-day-number {
@@ -122,7 +121,6 @@ body {
 .fc-event-title {
   display: block !important;
   white-space: nowrap !important;
-  overflow: hidden !important;
   text-overflow: ellipsis !important;
   min-width: 0 !important;
   text-align: left !important; /* На всякий случай для выравнивания */
@@ -130,7 +128,7 @@ body {
 
 /* ФИКС ДЛЯ СОБЫТИЙ-ТОЧЕК В РЕЖИМЕ МЕСЯЦА (DayGrid Dot Events) */
 .fc-daygrid-dot-event {
-    overflow: hidden !important; /* Убеждаемся, что блок обрезает контент */
+
 }
 
 /* ФИКС ДЛЯ КОНТЕЙНЕРОВ ТЕКСТА (чтобы они не выталкивали текст) */
@@ -142,7 +140,7 @@ body {
 
 /* ФИКС ДЛЯ КОНТЕЙНЕРА ЯЧЕЙКИ: на случай, если событие слишком высокое */
 .fc-daygrid-day-frame {
-    overflow: hidden !important;
+
 }
 
 .fc-event {

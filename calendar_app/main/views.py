@@ -23,7 +23,7 @@ def collect_events(user):
             },
             "color": '#9ea7d9',
             "textColor": '#000',
-            "allDay": False,
+            "display": 'block',
         }
         if event.repeat_status != 'none':
             rrule = {
