@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация</title>
+    <link rel="icon"
+          type="image/png"
+          href="https://img.icons8.com/pulsar-color/48/calendar.png">
+    <link href="{% static 'css/mobile/verification-page.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles/theme.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h3>Введите код подтверждения, отправленный на e-mail</h3>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input id="code" type="text" maxlength="6"  name="code" placeholder="Код" required>
+            <input class="button" type="submit" value="Готово">
+        </form>
+        <h2>{{ error }}</h2>
+    </div>
+</body>
+</html

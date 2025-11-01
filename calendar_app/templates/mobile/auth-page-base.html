@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация</title>
+    <link rel="icon"
+          type="image/png"
+          href="https://img.icons8.com/pulsar-color/48/calendar.png">
+    <link href="{% static 'css/mobile/auth-page-base.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles/theme.css' %}">
+    {% block styles %}{% endblock %}
+</head>
+<body>
+    <div class="auth-container">
+        {% block content %} {% endblock %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{% extends "mobile/main-page-base.html" %}
+{% load static %}
+{% block styles %}
+    <link href="{% static 'css/mobile/auth-buttons.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <h3>Войдите в аккаунт для создания событий</h3>
+        <a id="login" href="login/">Войти</a>
+        <a id="signup" href="register/">Регистрация</a>
+    </div>
+{% endblock %}

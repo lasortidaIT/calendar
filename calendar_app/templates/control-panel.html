@@ -1,0 +1,61 @@
+{% extends "main-page-base.html" %}
+{% load static %}
+{% block scripts %}
+    {{ events|safe|json_script:"events-data" }}
+{% endblock %}
+{% block styles %}
+    <link href="{% static 'css/control-panel.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+    <div class="info">
+        <span class="txt"><h3 class="email">{{ email }}</h3></span>
+        <a id="exit" href="logout/">Выйти</a>
+    </div>
+    <button id="new-button" class="new">Новое событие</button>
+    <form id="form" action="" method="POST">
+        {% csrf_token %}
+        <input id="id" class="invis" type="number" name="id">
+        <div id="title" class="title">
+            <input id="inputTitle" class="field" type="text" name="title" placeholder="Название" required>
+        </div>
+        <div class="time">
+            <label for="start-time">Начало:
+            <input lang="ru-RU" id="start-time" class="field" type="datetime-local" name="start-time" required></label>
+            <label for="end-time">Конец:
+            <input lang="ru-RU" id="end-time" class="field" type="datetime-local" name="end-time" required></label>
+        </div>
+        <div class="repeat">
+            <label for="repeat-vars">Повторять:
+            <select id="repeat-vars" name="repeat-vars">
+                <option value="none">Нет</option>
+                <option value="daily">Каждый день</option>
+                <option value="weekly">Каждую неделю</option>
+                <option value="monthly">Каждый месяц</option>
+                <option value="yearly">Каждый год</option>
+            </select></label>
+            <label for="end-repeat">Закончить повторение:
+            <select id="end-repeat" name="end-repeat">
+                <option value="never">Никогда</option>
+                <option value="date">По дате</option>
+            </select></label>
+            <label id="endLabel" for="end-repeat-date">Дата:
+            <input lang="ru-RU" id="end-repeat-date" class="field" type="datetime-local" name="end-repeat-date"></label>
+        </div>
+        <div class="alert">
+            <label for="alert-vars">Напоминать:
+            <select id="alert-vars" name="alert-vars">
+                <option value="none">Нет</option>
+                <option value="30m">За 30 минут</option>
+                <option value="1h">За 1 час</option>
+                <option value="2h">За 2 часа</option>
+                <option value="3h">За 3 часа</option>
+                <option value="1d">В начале дня</option>
+            </select></label>
+        </div>
+        <h3>{{ error }}</h3>
+        <input id="main-action" class="button" type="submit" value="Создать"/>
+    </form>
+    <button id="cancel" class="button">Отменить</button>
+    <button id="delete" class="button-accent">Удалить</button>
+    <script src="{% static 'js/control.js' %}"></script>
+{% endblock %}

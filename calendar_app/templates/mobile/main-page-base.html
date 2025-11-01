@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Календарь</title>
+    <link rel="icon"
+          type="image/png"
+          href="https://img.icons8.com/pulsar-color/48/calendar.png">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+    <link href="{% static 'css/mobile/main-page-base.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles/theme.css' %}">
+    {% block styles %}{% endblock %}
+    {% block scripts %}{% endblock %}
+    <script src='https://cdn.jsdelivr.net/npm/rrule@2.6.4/dist/es5/rrule.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/locales/ru.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/rrule@6.1.19/index.global.min.js'></script>
+    <script src="{% static 'js/calendar.js' %}"></script>
+</head>
+<body>
+    <div class="calendar-content">
+        <div class="calendar-container">
+            <div id="calendar"></div>
+        </div>
+    </div>
+    <div class="add-content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

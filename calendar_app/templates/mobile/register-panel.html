@@ -1,0 +1,22 @@
+{% extends "auth-page-base.html" %}
+{% load static %}
+{% block styles %}
+    <link href="{% static 'css/mobile/register-panel.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+    <h1>Регистрация</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input class="field" type="text" name="email" placeholder="e-mail">
+        <input class="field" type="password" name="password" placeholder="пароль">
+        <input class="field" type="password" name="password2" placeholder="повторите пароль">
+        <input type="hidden" name="timezone" id="timezone-input">
+        <h3>{{ error }}</h3>
+        <input class="button" type="submit" value="Далее" />
+    </form>
+    <script>
+        document.getElementById("timezone-input").value = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    </script>
+    <a class="link" href="../login">У меня есть аккаунт</a>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "auth-page-base.html" %}
+{% load static %}
+{% block styles %}
+    <link href="{% static 'css/mobile/login-panel.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+    <h1>Вход</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input class="field" type="text" name="email" placeholder="e-mail">
+        <input class="field" type="password" name="password" placeholder="пароль">
+        <h3>{{ error }}</h3>
+        <input class="button" type="submit" value="Войти" />
+    </form>
+    <a class="link" href="../register">Создать аккаунт</a>
+{% endblock %}
