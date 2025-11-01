@@ -33,7 +33,6 @@ document.getElementById('end-time').addEventListener('change', function() {
             alert('Дата начала не может быть позже (или равна) даты конца!');
         }
     }
-
 });
 
 document.getElementById('end-repeat').addEventListener('change', function() {

@@ -6,9 +6,6 @@ from django.core.mail import send_mail
 from django.conf import settings
 
 
-def custom_render(request, name, mobile='', context={}):
-    return render(request, f'{mobile}/{name}', context)
-
 # обработчик входа в аккаунт
 def login_view(request):
     mobile = 'mobile/' if "Mobile" in request.headers["User-Agent"] else ''

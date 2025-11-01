@@ -87,7 +87,6 @@ def base_view(request):
                     event.save()
                 return redirect('/')
             events = collect_events(request.user)
-            print(events)
             context = {'email': str(user.email),
                        'events': json.dumps(events)}
             return render(request, f"{mobile}control-panel.html", context)

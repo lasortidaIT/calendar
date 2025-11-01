@@ -134,7 +134,6 @@ document.addEventListener('DOMContentLoaded', function() {
             right: right
         },
         allDaySlot: false,
-
         buttonText: {
             today: 'Сегодня',
             month: 'Месяц',

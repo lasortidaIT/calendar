@@ -19,7 +19,7 @@ class Command(BaseCommand):
             user_timezone = pytz.timezone(author.timezone)
             local_time = time_server.astimezone(user_timezone).replace(tzinfo=None)
             next_alert = datetime.fromisoformat(str(event.next_alert_time))
-            if (local_time - next_alert).total_seconds() > 0 and ((local_time - next_alert).total_seconds() / 60) >= 30:
+            if (local_time - next_alert).total_seconds() > 0 and ((local_time - next_alert).total_seconds() / 60) >= 0:
                 send_mail(
                     subject=f'Напоминание: {event.title}',
                     message=f"У вас запланировано событие: {event.title}. {event.next_time}!",

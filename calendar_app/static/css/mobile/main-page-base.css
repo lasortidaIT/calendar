@@ -9,7 +9,7 @@ body {
     color: var(--text-color);
 }
 
-.titletxt {
+.title-txt {
     font-size: 2vh;
 }
 
@@ -142,4 +142,5 @@ body {
 
 .fc-event {
     cursor: pointer;
+    font-size: 1vh;
 }
