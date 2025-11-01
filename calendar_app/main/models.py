@@ -30,10 +30,10 @@ class Event(models.Model):
     title = models.CharField(max_length=100)
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
-    repeat_status = models.CharField(choices=REPEAT_CHOICES)
-    end_repeat = models.CharField(choices=END_REPEAT)
+    repeat_status = models.CharField(max_length=10, choices=REPEAT_CHOICES)
+    end_repeat = models.CharField(max_length=10, choices=END_REPEAT)
     end_repeat_date = models.DateTimeField(default=datetime.now(), blank=True)
-    alert = models.CharField(choices=ALERT_CHOICES)
+    alert = models.CharField(max_length=10, choices=ALERT_CHOICES)
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='events')
 
     next_time = models.DateTimeField(null=True, blank=True)
