@@ -4,35 +4,35 @@ import pytz
 from .models import Event
 import json
 
-
+# функция собирает в виде я json все события пользователя
 def collect_events(user):
     user_events = Event.objects.filter(author=user)
     formatted_events = []
     for event in user_events:
         el = {
-            "id": event.id,
-            "title": event.title,
-            "start": event.start_date.isoformat(),
-            "end": event.end_date.isoformat(),
+            "id": event.id, # id
+            "title": event.title, #
+            "start": event.start_date.isoformat(), #
+            "end": event.end_date.isoformat(), #
             "extendedProps": {
-                "alert": event.alert,
-                "duration": {
+                "alert": event.alert, #
+                "duration": { #
                     "hours": (event.end_date - event.start_date).total_seconds() // (60 * 60),
                     "minutes": (event.end_date - event.start_date).total_seconds() % (60 * 60) // 60,
                 }
             },
-            "color": '#9ea7d9',
-            "textColor": '#000',
-            "display": 'block',
+            "color": '#9ea7d9', #
+            "textColor": '#000', #
+            "display": 'block', #
         }
         if event.repeat_status != 'none':
             rrule = {
-                "freq": event.repeat_status,
-                "dtstart": event.start_date.isoformat(),
-                "interval": 1,
+                "freq": event.repeat_status, #
+                "dtstart": event.start_date.isoformat(), #
+                "interval": 1, #
             }
             if event.end_repeat == 'date':
-                rrule["until"] = event.end_repeat_date.isoformat()
+                rrule["until"] = event.end_repeat_date.isoformat() #
             el["rrule"] = rrule
         formatted_events.append(el)
     return formatted_events

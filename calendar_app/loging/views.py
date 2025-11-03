@@ -8,10 +8,12 @@ from django.conf import settings
 
 # обработчик входа в аккаунт
 def login_view(request):
+    # определяем тип устройства, с которого пришел запрос
     mobile = 'mobile/' if "Mobile" in request.headers["User-Agent"] else ''
     if request.method == 'POST': # если нажимается кнопка в форме
         email = request.POST.get('email')
         password = request.POST.get('password')
+        # пробуем найти пользователя с такими данными
         user = authenticate(request, email=email, password=password)
 
         if user is not None: # если пользователь правильно всё ввёл
@@ -21,7 +23,7 @@ def login_view(request):
             # пользователь с такими данными не найден
             context = {'error': 'Неверные данные для входа!'}
             return render(request, f'{mobile}login-panel.html', context)
-
+    # обработчик GET запроса
     return render(request, f'{mobile}login-panel.html')
 
 
@@ -38,13 +40,14 @@ def register_view(request):
             context = {'error': 'Пароли не совпадают!'}
             return render(request, f'{mobile}register-panel.html', context)
 
+        # проверяем, что email уникален
         if CustomUser.objects.filter(email=email).exists():
             context = {'error': 'Адрес электронной почты уже используется!'}
             return render(request, f'{mobile}register-panel.html', context)
 
         token = str(randint(100000, 999999)) # создаём код подтверждения
         user = CustomUser.objects.create_user(email=email, password=password, token=token, timezone=timezone_str)
-        login(request, user)
+        login(request, user) # осуществляем вход
         send_mail(
             subject='Код подтверждения календаря',
             message=f"Здравствуйте! Ваш код подтверждения: {token}",
@@ -53,6 +56,7 @@ def register_view(request):
             fail_silently=False,
         )
         return redirect(f'/verify/{str(user.uuid)}') # перенаправляем на страницу подтверждения
+    # GET запрос
     return render(request, f'{mobile}register-panel.html')
 
 # обработчик выхода из аккаунта

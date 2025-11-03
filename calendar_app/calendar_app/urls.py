@@ -11,6 +11,6 @@ urlpatterns = [
     path('register/', register_view), # регистрация
     path('verify/<str:uuid>/', verify_view), # подтверждение аккаунта с параметром uuid
     path('logout/', logout_view), # выход из аккаунта
-    path('delete/event/<str:id>/', delete_event)
+    path('delete/event/<str:id>/', delete_event) # удаление события
 ]
 
