@@ -78,7 +78,7 @@ class Event(models.Model):
         elif self.repeat_status == 'yearly':
             next_time += timedelta(days=365)
 
-        if self.end_repeat == 'date' and datetime.fromisoformat(str(self.end_date)) < next_time or self.repeat_status == 'none':
+        if (self.end_repeat == 'date' and datetime.fromisoformat(str(self.end_date)) < next_time) or (self.repeat_status == 'none'):
             self.active_alert = False
         else:
             self.next_time = datetime.isoformat(next_time)
